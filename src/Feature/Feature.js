@@ -7,11 +7,12 @@ export default class Feature extends Component {
     
     const features = Object.keys(this.props.features).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
-      console.log(featureHash);
+      console.log(feature);
       const options = this.props.features[feature].map(item => {
         const itemHash = slugify(JSON.stringify(item));
         console.log(itemHash);
         return (
+          <div>
           <FeatureItem 
             itemHash={itemHash}
             key={itemHash}
@@ -21,12 +22,13 @@ export default class Feature extends Component {
             item={item}
             itemName={item.name}
             itemCost={item.cost} />
+            </div>
         )
       })
       return (
         <fieldset className='feature' key={featureHash}>
         <legend className='feature__name'>
-            <h3></h3>
+            <h3>{feature}</h3>
         </legend>
           {options}
       </fieldset>
